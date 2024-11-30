@@ -2,8 +2,9 @@ module rest-http
 
 go 1.21.6
 
+require github.com/newrelic/go-agent/v3 v3.35.1
+
 require (
-	github.com/newrelic/go-agent/v3 v3.35.1 // indirect
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
