@@ -8,7 +8,9 @@ Add an ENV VAR for NEW_RELIC_LICENSE_KEY
 
 Steps 
 
-1. **rest-api** 
+1. **hello-world**
+
+2. **rest-api** 
     
     run the below command from go-easy directory.  
     
@@ -20,10 +22,10 @@ Steps
     Look for the `rest-api.diff` under the `2.rest-api` directory
 
 
-2. **gin** 
+3. **multi-endpoint rest API** 
     
     ```powershell
-    go run . -path ..\3.gin\ name rest-http -diff ..\3.rest-api\gin.diff -agent nrApp -debug true
+    go run . -path ..\3.multi-rest\ name multi-rest-http -diff ..\3.multi-rest-http\multi-rest-http.diff -agent nrApp -debug true
     ```
 
-    Look for `gin.diff` under the `3.gin` directory
+    Look for `multi-rest-http.diff` under the `3.multi-rest` directory
