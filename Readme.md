@@ -1,58 +1,66 @@
-pre-req
+## Prerequisites
 
-- Clone Go-easy repo & tidy
-- Setup directory for sample  apps
+Before you begin, make sure you have:
 
-
-Add an ENV VAR for NEW_RELIC_LICENSE_KEY
-
-Steps 
-
-1. **hello-world**
-
-    Run the below command from [go-easy-instrumentation](./go-easy-instrumentation/) directory.  
-    
-    > **Note**: This assumes the [go-easy-instrumentation](https://github.com/newrelic/go-easy-instrumentation) repo is cloned under go-samples directory
-    
+1. The Go-Samples repository cloned locally
+2. Go-easy instrumentation tool installed:
     ```bash
-    go run . -path ../1.hello-world/ -name hello-world -diff ../1.hello-world/greetings.diff -agent nrApp
+    go install github.com/newrelic/go-easy-instrumentation@latest
     ```
-    Look for the `rest-api.diff` under the `2.rest-api` directory
-
-2. **rest-api** 
-    
-    run the below command from go-easy directory.  
-    
-    Note: This assumes the go-easy repo is cloned under go-samples directory
-    
+3. Required environment variables set:
     ```bash
-    go run . -path ../2.rest-api/ -name rest-http -diff ../2.rest-api/rest-api.diff -agent nrApp
-    ```
-    Look for the `rest-api.diff` under the `2.rest-api` directory
-
-
-3. **multi-endpoint rest API** 
-    
-    ```bash
-    go run . -path ../3.multi-rest/ name multi-rest-http -diff ../3.multi-rest-http/multi-rest-http.diff -agent nrApp 
+    export NEW_RELIC_LICENSE_KEY="your_license_key"
+    export NEW_RELIC_APP_NAME="your_app_name"
     ```
 
-    Look for `multi-rest-http.diff` under the `3.multi-rest` directory
+## Instrumenting Sample Applications
+
+1. **Hello World**
+
+     From the root directory, run:
+     
+     ```bash
+     go-easy-instrumentation instrument 1.hello-world -o 1.hello-world/greeting.diff
+     ```
+     
+     The instrumentation changes will be saved in [1.hello-world](1.hello-world/).
+
+2. **REST API**
+
+    Run the following command from the go-easy directory:
+    
+    > **Note**: Ensure the go-easy repository is cloned under the go-samples directory
+    
+    ```bash
+    go-easy-instrumentation instrument 2.rest-api --output 2.rest-api/rest-api.diff
+    ```
+    Check for the `rest-api.diff` file in the [2.rest-api](2.rest-api/) directory.
+
+3. **Multi-endpoint REST API with Gin**
+
+    Run the following command:
+    
+    ```bash
+    go-easy-instrumentation instrument 3.gin -o 3.gin/gin-rest.diff
+    ```
+    Check for the `gin-rest.diff` file in the [3.gin](3.gin/) directory.
 
 4. **gRPC Client & Server**
 
-    This requires 2 different commands, one of Client and another for server
+    This requires two separate commands, one for the client and another for the server.
 
     **Client**
 
-    To instrument gRpc client, run the following command 
-
+    To instrument the gRPC client, run the following command:
+    
     ```bash
-    go run . -path ../4.gRpc/client -agent nrApp -name grcp-client -diff ../4.gRpc/client/client.diff
+    go-easy-instrumentation instrument 4.gRpc/client --output 4.gRpc/client/grpc-client.diff
     ```
 
-    To instrument gRpc server, run the following command. 
+    **Server**
 
-        ```bash
-    go run . -path ../4.gRpc/server -agent nrApp -name grcp-server -diff ../4.gRpc/server/server.diff
+    To instrument the gRPC server, run the following command:
+    
+    ```bash
+    go-easy-instrumentation instrument 4.gRpc/server --output 4.gRpc/server/grpc-server.diff
     ```
