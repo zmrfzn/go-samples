@@ -1,3 +1,9 @@
+[![New Relic Experimental header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/Experimental.png)](https://opensource.newrelic.com/oss-category/#new-relic-experimental)
+
+# DevRel - Go Easy Instrumentation with New Relic
+
+[New Relic Go easy instrumentation](https://docs.newrelic.com/docs/apm/agents/go-agent/installation/install-automation-new-relic-go) does most of the work for you by suggesting changes to your source code that instrument your application with the New Relic Go agent. This tool is currently in preview. 
+
 ## Prerequisites
 
 Before you begin, make sure you have:
